@@ -108,14 +108,16 @@ void main()
 		uint packed = hp.x << 14;
 
 		if (total > 1)
+		{
 			packed |= hp.y << 7;
+
+			if (total > 2)
+				packed |= hp.z;
+			else
+				packed |= 100u;
+		}
 		else
 			packed |= 12900u;
-
-		if (total > 2)
-			packed |= hp.z;
-		else if (total == 2)
-			packed |= 100u;
 
 		data.acc.summ = packed;
 	}
