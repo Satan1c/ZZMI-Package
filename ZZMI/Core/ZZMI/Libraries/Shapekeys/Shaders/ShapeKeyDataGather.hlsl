@@ -26,7 +26,6 @@ RWBuffer<float> MultipliersRW : register(u7);
 
 [numthreads(1, 1, 1)] void main(uint3 ThreadId : SV_DispatchThreadID) {
   uint len = 0;
-  uint i = ThreadId.x;
   OffsetB.GetDimensions(len);
   for (uint i = 0; i < len; i++) {
     if (cb0[0].offset == OffsetB[i][0] && cb0[0].count == OffsetB[i][1]) {
